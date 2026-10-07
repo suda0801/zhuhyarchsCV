@@ -9,8 +9,8 @@ const CARD_IMAGES = {
   ic2uhi: [{ src: "images/ic2uhi/微信图片_20261007130428_4_2.jpg", alt: "IC2UHI 2026" }],
   green: [
     { src: "images/绿建竞赛/微信图片_20261007131514_13_2.jpg", alt: "Green building competition board 01" },
-    { src: "images/绿建竞赛/微信图片_20261007133047_14_2.png", alt: "Green building competition board 02" },
-    { src: "images/绿建竞赛/微信图片_20261007133047_15_2.png", alt: "Green building competition board 03" },
+    { src: "images/绿建竞赛/微信图片_20261007133047_14_2.jpg", alt: "Green building competition board 02" },
+    { src: "images/绿建竞赛/微信图片_20261007133047_15_2.jpg", alt: "Green building competition board 03" },
   ],
   osaka: [{ src: "images/大阪SDG/微信图片_20261007130435_8_2.jpg", alt: "Osaka University SDGs video contest" }],
   club: [
@@ -66,6 +66,7 @@ function render() {
   document.getElementById("sub-education").textContent = d.timeline.education;
   document.getElementById("sub-work").textContent = d.timeline.work;
   document.getElementById("sub-research").textContent = d.timeline.research;
+  document.getElementById("nav-publication").textContent = d.nav.publication;
   document.getElementById("nav-skills").textContent = d.nav.skills;
   document.getElementById("nav-awards").textContent = d.nav.awards;
   document.getElementById("nav-contact").textContent = d.nav.contact;
@@ -462,7 +463,15 @@ function bind() {
 
   const toTop = document.getElementById("to-top");
   const heroCarousel = document.getElementById("hero-carousel");
-  if (heroCarousel) startCarousel(heroCarousel, 3000);
+  if (heroCarousel) {
+    startCarousel(heroCarousel, 3000);
+    // Defer non-first hero slides until the page finishes loading
+    window.addEventListener("load", () => {
+      heroCarousel.querySelectorAll("img[data-src]").forEach((img) => {
+        img.src = img.dataset.src;
+      });
+    });
+  }
   const toggleTop = () => toTop.classList.toggle("show", window.scrollY > 420);
   window.addEventListener("scroll", toggleTop, { passive: true });
   toggleTop();
