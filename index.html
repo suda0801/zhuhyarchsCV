@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Haoyi Zhu / 朱浩仪 / 朱 浩儀 — architecture and built-environment CV" />
+    <title>朱浩仪 · 建筑环境</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+JP:wght@500&family=Noto+Serif+SC:wght@500;600&family=Outfit:wght@400;500;560&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="frame">
+      <aside class="sidebar">
+        <div class="brand">
+          <img class="monogram" src="images/icon/微信图片_20261007131142_9_2.jpg" alt="朱浩仪" />
+          <div>
+            <strong>ZHU HAOYI</strong>
+            <small>ARCH · ENV</small>
+          </div>
+        </div>
+        <div class="lang-block">
+          <p id="lang-label">语言</p>
+          <div class="lang-switch" role="group" aria-label="Language">
+            <button type="button" data-lang="zh">中文（简体）</button>
+            <button type="button" data-lang="ja">日本語</button>
+            <button type="button" data-lang="en">English</button>
+          </div>
+        </div>
+        <button class="menu-btn" id="menu-btn" type="button" aria-label="Menu">Menu</button>
+        <nav class="nav" id="site-nav">
+          <a href="#about" id="nav-about">简介</a>
+          <a href="#vision" id="nav-vision">志向</a>
+          <div class="nav-group">
+            <a href="#timeline" id="nav-timeline">经历</a>
+            <div class="nav-sub">
+              <a href="#timeline" data-subfilter="education" id="sub-education"></a>
+              <a href="#timeline" data-subfilter="work" id="sub-work"></a>
+              <a href="#timeline" data-subfilter="research" id="sub-research"></a>
+            </div>
+          </div>
+          <a href="#skills" id="nav-skills">技能</a>
+          <a href="#awards" id="nav-awards">成果</a>
+          <a href="#contact" id="nav-contact">联络</a>
+        </nav>
+        <p class="side-meta">
+          Shenzhen University<br />Architecture · Built Environment
+        </p>
+      </aside>
+
+      <main class="main" id="main">
+        <header class="hero" id="top">
+          <div class="hero-grid" aria-hidden="true"></div>
+          <div class="hero-wrap">
+            <div class="hero-text">
+              <p class="kicker" id="hero-kicker"></p>
+              <h1 id="hero-name"></h1>
+              <p class="ruby" id="hero-ruby"></p>
+              <p class="lead" id="hero-lead"></p>
+              <div class="hero-facts">
+                <span id="hero-role"></span>
+                <span id="hero-location"></span>
+              </div>
+              <div class="actions">
+                <a class="btn" href="#timeline" id="cta-primary"></a>
+                <a class="btn ghost" href="#contact" id="cta-secondary"></a>
+              </div>
+            </div>
+            <figure class="hero-portrait">
+              <div class="carousel" id="hero-carousel">
+                <div class="slides">
+                  <img class="slide active" src="images/life/微信图片_20261007131513_12_2.jpg" alt="Haoyi Zhu · life 01" />
+                  <img class="slide" src="images/life/微信图片_20261007134225_16_2.jpg" alt="Haoyi Zhu · life 02" />
+                  <img class="slide" src="images/life/微信图片_20261007134226_17_2.jpg" alt="Haoyi Zhu · life 03" />
+                  <img class="slide" src="images/life/微信图片_20261007134227_18_2.jpg" alt="Haoyi Zhu · life 04" />
+                  <button class="car-arrow prev" type="button" aria-label="Previous">‹</button>
+                  <button class="car-arrow next" type="button" aria-label="Next">›</button>
+                </div>
+                <div class="dots">
+                  <button type="button" class="active" aria-label="Slide 1"></button>
+                  <button type="button" aria-label="Slide 2"></button>
+                  <button type="button" aria-label="Slide 3"></button>
+                  <button type="button" aria-label="Slide 4"></button>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </header>
+
+        <section class="section" id="about">
+          <div class="section-head">
+            <div>
+              <span class="index" id="about-index">01</span>
+              <h2 id="about-title"></h2>
+            </div>
+          </div>
+          <p class="prose" id="about-body"></p>
+          <div class="facts" id="about-facts"></div>
+          <div class="keywords" id="keywords"></div>
+        </section>
+
+        <section class="section" id="vision">
+          <div class="section-head">
+            <div>
+              <span class="index" id="vision-index">02</span>
+              <h2 id="vision-title"></h2>
+            </div>
+          </div>
+          <div class="vision-grid">
+            <div class="caption-card">
+              <span class="index">FUTURE</span>
+              <b id="vision-caption"></b>
+            </div>
+            <div class="prose" id="vision-copy"></div>
+          </div>
+        </section>
+
+        <section class="section" id="timeline">
+          <div class="section-head">
+            <div>
+              <span class="index" id="timeline-index">03</span>
+              <h2 id="timeline-title"></h2>
+            </div>
+            <span class="index" id="filter-hint"></span>
+          </div>
+          <div class="filters">
+            <button type="button" data-filter="all" id="f-all"></button>
+            <button type="button" data-filter="education" id="f-education"></button>
+            <button type="button" data-filter="work" id="f-work"></button>
+            <button type="button" data-filter="research" id="f-research"></button>
+          </div>
+          <div class="timeline" id="timeline-list"></div>
+        </section>
+
+        <section class="section" id="publication">
+          <div class="section-head">
+            <div>
+              <span class="index" id="pub-index">06</span>
+              <h2 id="pub-title"></h2>
+            </div>
+          </div>
+          <article class="pub">
+            <span class="index" id="pub-venue"></span>
+            <h3 id="pub-paper"></h3>
+            <p id="pub-meta"></p>
+            <p id="pub-note"></p>
+            <p>
+              <a href="https://www.the-innovation.org/" target="_blank" rel="noopener">the-innovation.org</a>
+            </p>
+          </article>
+        </section>
+
+        <section class="section" id="skills">
+          <div class="section-head">
+            <div>
+              <span class="index" id="skills-index">07</span>
+              <h2 id="skills-title"></h2>
+            </div>
+          </div>
+          <div class="skill-cols">
+            <div class="skill-box">
+              <h3 id="sk-design"></h3>
+              <ul id="sk-design-list"></ul>
+            </div>
+            <div class="skill-box">
+              <h3 id="sk-sim"></h3>
+              <ul id="sk-sim-list"></ul>
+            </div>
+            <div class="skill-box">
+              <h3 id="sk-comm"></h3>
+              <ul id="sk-comm-list"></ul>
+            </div>
+          </div>
+          <h3 id="lang-heading" class="kicker" style="margin-top: 1.8rem"></h3>
+          <div class="lang-list" id="lang-list"></div>
+        </section>
+
+        <section class="section" id="awards">
+          <div class="section-head">
+            <div>
+              <span class="index" id="awards-index">08</span>
+              <h2 id="awards-title"></h2>
+            </div>
+          </div>
+          <div class="award-grid" id="award-grid"></div>
+        </section>
+
+        <section class="section" id="contact">
+          <div class="section-head">
+            <div>
+              <span class="index" id="contact-index">09</span>
+              <h2 id="contact-title"></h2>
+            </div>
+          </div>
+          <p class="prose" id="contact-text"></p>
+          <div class="contact-grid">
+            <div class="contact-card">
+              <span class="contact-kind" id="label-wechat"></span>
+              <b>shirleygaveup</b>
+              <button class="copy-btn" id="copy-wechat" type="button"></button>
+            </div>
+            <div class="contact-card">
+              <span class="contact-kind" id="label-phone"></span>
+              <b>+86 18998789930</b>
+              <button class="copy-btn" id="copy-phone" type="button"></button>
+            </div>
+            <div class="contact-card">
+              <span class="contact-kind" id="label-email"></span>
+              <b>zhuhyarchs@gmail.com</b>
+              <button class="copy-btn" id="copy-email" type="button"></button>
+            </div>
+            <div class="contact-card">
+              <span class="contact-kind" id="label-email2"></span>
+              <b>zhuhaoyi2022@email.szu.edu.cn</b>
+              <button class="copy-btn" id="copy-email2" type="button"></button>
+            </div>
+          </div>
+          <p class="contact-loc" id="contact-loc"></p>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer-bar">
+      <p id="footer-text"></p>
+      <div class="footer-contacts">
+        <button type="button" class="footer-contact" id="footer-wechat"></button>
+        <button type="button" class="footer-contact" id="footer-phone"></button>
+        <button type="button" class="footer-contact" id="footer-email"></button>
+      </div>
+    </footer>
+
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+      <div class="modal-backdrop" data-close="true"></div>
+      <div class="modal-panel">
+        <button class="modal-close" id="modal-close" type="button" aria-label="Close">×</button>
+        <div class="modal-media" id="modal-media"></div>
+        <div class="modal-body">
+          <div class="card-top">
+            <span class="kind" id="modal-kind"></span>
+            <span class="period" id="modal-period"></span>
+          </div>
+          <h3 id="modal-title"></h3>
+          <p class="org" id="modal-org"></p>
+          <p class="modal-text" id="modal-text"></p>
+          <div class="modal-links" id="modal-links"></div>
+          <div class="tags" id="modal-tags"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
