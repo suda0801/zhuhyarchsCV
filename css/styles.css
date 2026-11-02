@@ -222,6 +222,7 @@ button {
 
 .side-meta {
   margin-top: auto;
+  margin-bottom: 2.4rem;
   font-family: var(--mono);
   font-size: 0.7rem;
   color: var(--sky-2);
@@ -747,6 +748,312 @@ button {
   color: #fff;
 }
 
+/* ---------- portfolio ---------- */
+
+.portfolio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: clamp(1.4rem, 3vw, 2.8rem);
+  align-items: center;
+  padding: clamp(1.1rem, 2.4vw, 1.9rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(150deg, var(--cream-2), var(--white) 68%);
+  box-shadow: var(--shadow);
+}
+
+.pf-visual {
+  position: relative;
+  min-width: 0;
+}
+
+.pf-cover {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.pf-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 18px 42px rgba(49, 73, 126, 0.2), 5px 5px 0 -1px #fff, 6px 6px 0 0 var(--line);
+  transform: rotate(-1.4deg);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pf-cover:hover img,
+.pf-cover:focus-visible img {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 0 26px 56px rgba(49, 73, 126, 0.28), 5px 5px 0 -1px #fff, 6px 6px 0 0 var(--line);
+}
+
+.pf-cover:focus-visible {
+  outline: none;
+}
+
+.pf-badge {
+  position: absolute;
+  top: -0.55rem;
+  right: -0.5rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  background: var(--pink);
+  color: #fff;
+  padding: 0.28rem 0.68rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(217, 107, 122, 0.35);
+}
+
+.pf-open-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  background: rgba(49, 73, 126, 0.92);
+  color: var(--cream);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  padding: 0.42rem 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.pf-open-hint::before {
+  content: "▸";
+  font-size: 0.8rem;
+}
+
+.pf-cover:hover .pf-open-hint {
+  background: var(--pink);
+}
+
+.pf-strip {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+}
+
+.pf-strip img {
+  width: 43%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(49, 73, 126, 0.14);
+  transform: rotate(1.6deg);
+}
+
+.pf-strip img:last-child {
+  transform: rotate(-1.9deg);
+}
+
+.pf-body {
+  min-width: 0;
+}
+
+.pf-body h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.55rem, 2.6vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--indigo-2);
+  margin: 0.35rem 0 0.6rem;
+}
+
+.pf-body > p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.pf-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.25rem;
+}
+
+.pf-facts .fact b {
+  display: block;
+  margin-top: 0.1rem;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--indigo-2);
+}
+
+.pf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 1.15rem;
+}
+
+.pf-body .actions {
+  margin-top: 1.5rem;
+}
+
+/* ---------- pdf preview ---------- */
+
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.pdf-modal[hidden] {
+  display: none;
+}
+
+.pdf-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 30, 50, 0.82);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.pdf-modal.open .pdf-backdrop {
+  opacity: 1;
+}
+
+.pdf-panel {
+  position: relative;
+  width: min(1180px, 100%);
+  height: min(880px, 92vh);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #1d2942;
+  box-shadow: 0 32px 80px rgba(10, 16, 30, 0.55);
+  transform: translateY(16px) scale(0.985);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.pdf-modal.open .pdf-panel {
+  transform: none;
+  opacity: 1;
+}
+
+.pdf-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex: none;
+  padding: 0.75rem 1rem 0.75rem 1.25rem;
+  background: var(--indigo-2);
+  color: var(--cream);
+}
+
+.pdf-bar-text {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.pdf-bar-text .index {
+  color: var(--sky-2);
+  white-space: nowrap;
+}
+
+.pdf-bar-text h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin: 0;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pdf-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: none;
+}
+
+.pdf-action {
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  padding: 0.34rem 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--cream);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.pdf-action:hover {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #fff;
+}
+
+.pdf-close {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+
+.pdf-close:hover {
+  background: var(--pink);
+}
+
+.pdf-frame-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: #e9e6dd;
+}
+
+.pdf-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+
+.pdf-fallback {
+  display: none;
+  margin: 0;
+  padding: 1.6rem 1.4rem;
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: var(--cream-2);
+}
+
 /* ---------- skills ---------- */
 
 .skill-cols {
@@ -768,11 +1075,32 @@ button {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .skill-box li {
-  border-bottom: 1px solid var(--line);
-  padding: 0.4rem 0;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.93rem;
+  line-height: 1.2;
+  color: var(--indigo-2);
+  box-shadow: 0 4px 12px rgba(49, 73, 126, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
+    color 0.2s ease;
+}
+
+.skill-box li:hover {
+  transform: translateY(-2px);
+  border-color: var(--sky);
+  background: var(--cream-2);
+  color: var(--indigo);
+  box-shadow: 0 8px 18px rgba(49, 73, 126, 0.12);
 }
 
 .lang-list {
@@ -1267,8 +1595,13 @@ button {
   .award-grid,
   .skill-cols,
   .facts,
-  .contact-grid {
+  .contact-grid,
+  .portfolio {
     grid-template-columns: 1fr;
+  }
+
+  .pf-strip {
+    justify-content: flex-start;
   }
 
   .lang-row {
@@ -1294,6 +1627,54 @@ button {
   }
 }
 
+@media (max-width: 700px) {
+  .pdf-panel {
+    height: auto;
+    max-height: 92vh;
+  }
+
+  .pdf-frame-wrap {
+    flex: none;
+  }
+
+  .pdf-frame {
+    display: none;
+  }
+
+  .pdf-fallback {
+    display: block;
+  }
+
+  .pdf-bar {
+    align-items: flex-start;
+    padding: 0.7rem 0.8rem 0.7rem 1rem;
+  }
+
+  .pdf-bar-text {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .pdf-bar-text .index {
+    font-size: 0.6rem;
+  }
+
+  .pdf-bar-text h3 {
+    font-size: 0.95rem;
+    line-height: 1.3;
+    white-space: normal;
+  }
+
+  .pdf-action {
+    padding: 0.28rem 0.7rem;
+    font-size: 0.68rem;
+  }
+
+  .pf-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 600px) {
   .footer-bar p {
     display: none;
@@ -1315,7 +1696,11 @@ button {
   .btn,
   .modal-panel,
   .modal-backdrop,
-  .hero-portrait .carousel .slides {
+  .hero-portrait .carousel .slides,
+  .pf-cover img,
+  .pdf-panel,
+  .pdf-backdrop,
+  .skill-box li {
     transition: none;
   }
 }
@@ -1327,6 +1712,7 @@ button {
   .card-more,
   .footer-bar,
   .modal,
+  .pdf-modal,
   .to-top,
   .menu-btn,
   .copy-btn {

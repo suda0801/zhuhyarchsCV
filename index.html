@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Haoyi Zhu / 朱浩仪 / 朱 浩儀 — architecture and built-environment CV" />
-    <title>朱浩仪 · 建筑环境</title>
+    <title>ZhuHaoyiCV</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,12 +45,13 @@
             </div>
           </div>
           <a href="#publication" id="nav-publication">出版</a>
+          <a href="#portfolio" id="nav-portfolio">作品集</a>
           <a href="#skills" id="nav-skills">技能</a>
           <a href="#awards" id="nav-awards">成果</a>
           <a href="#contact" id="nav-contact">联络</a>
         </nav>
         <p class="side-meta">
-          Shenzhen University<br />Architecture · Built Environment
+          School of Architecture &amp;<br />Urban Planning, Shenzhen University
         </p>
       </aside>
 
@@ -156,10 +157,44 @@
           </article>
         </section>
 
+        <section class="section" id="portfolio">
+          <div class="section-head">
+            <div>
+              <span class="index" id="pf-index">05</span>
+              <h2 id="pf-title"></h2>
+            </div>
+            <span class="index" id="pf-kicker"></span>
+          </div>
+          <div class="portfolio">
+            <div class="pf-visual">
+              <button class="pf-cover" id="pf-cover-btn" type="button" aria-haspopup="dialog">
+                <img src="images/portfolio/cover.jpg" alt="Portfolio cover · Together with Nature" loading="lazy" />
+                <span class="pf-badge" id="pf-badge"></span>
+                <span class="pf-open-hint" id="pf-hint"></span>
+              </button>
+              <div class="pf-strip" aria-hidden="true">
+                <img src="images/portfolio/page-3.jpg" alt="" loading="lazy" />
+                <img src="images/portfolio/page-4.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+            <div class="pf-body">
+              <span class="kind" id="pf-kind"></span>
+              <h3 id="pf-doc-title"></h3>
+              <p id="pf-desc"></p>
+              <div class="pf-facts" id="pf-facts"></div>
+              <div class="pf-tags" id="pf-tags"></div>
+              <div class="actions">
+                <button class="btn" id="pf-open" type="button" aria-haspopup="dialog"></button>
+                <a class="btn ghost" id="pf-newtab" target="_blank" rel="noopener"></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section class="section" id="skills">
           <div class="section-head">
             <div>
-              <span class="index" id="skills-index">05</span>
+              <span class="index" id="skills-index">06</span>
               <h2 id="skills-title"></h2>
             </div>
           </div>
@@ -184,7 +219,7 @@
         <section class="section" id="awards">
           <div class="section-head">
             <div>
-              <span class="index" id="awards-index">06</span>
+              <span class="index" id="awards-index">07</span>
               <h2 id="awards-title"></h2>
             </div>
           </div>
@@ -194,7 +229,7 @@
         <section class="section" id="contact">
           <div class="section-head">
             <div>
-              <span class="index" id="contact-index">07</span>
+              <span class="index" id="contact-index">08</span>
               <h2 id="contact-title"></h2>
             </div>
           </div>
@@ -250,6 +285,26 @@
           <p class="modal-text" id="modal-text"></p>
           <div class="modal-links" id="modal-links"></div>
           <div class="tags" id="modal-tags"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-modal" id="pdf-modal" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title" hidden>
+      <div class="pdf-backdrop" data-pdf-close="true"></div>
+      <div class="pdf-panel">
+        <div class="pdf-bar">
+          <div class="pdf-bar-text">
+            <span class="index" id="pdf-modal-kind"></span>
+            <h3 id="pdf-modal-title"></h3>
+          </div>
+          <div class="pdf-bar-actions">
+            <a class="pdf-action" id="pdf-newtab" target="_blank" rel="noopener"></a>
+            <button class="pdf-close" id="pdf-close" type="button" aria-label="Close">×</button>
+          </div>
+        </div>
+        <div class="pdf-frame-wrap">
+          <iframe class="pdf-frame" id="pdf-frame" title="Portfolio PDF"></iframe>
+          <p class="pdf-fallback" id="pdf-fallback"></p>
         </div>
       </div>
     </div>

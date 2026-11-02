@@ -1,3 +1,5 @@
+const PDF_URL = "朱浩儀-portfolio_2512updated.pdf";
+
 const CONTACT = {
   wechat: "shirleygaveup",
   phone: "+86 18998789930",
@@ -6,6 +8,11 @@ const CONTACT = {
 };
 
 const CARD_IMAGES = {
+  nikken: [{ src: "images/日建/微信图片_20261102215907_733_2.jpg", alt: "Nikken Sekkei (China) · intern work" }],
+  ku: [
+    { src: "images/KU/微信图片_20261102221144_735_2.jpg", alt: "Kanagawa University exchange 01" },
+    { src: "images/KU/微信图片_20261102221145_736_2.jpg", alt: "Kanagawa University exchange 02" },
+  ],
   ic2uhi: [{ src: "images/ic2uhi/微信图片_20261007130428_4_2.jpg", alt: "IC2UHI 2026" }],
   green: [
     { src: "images/绿建竞赛/微信图片_20261007131514_13_2.jpg", alt: "Green building competition board 01" },
@@ -67,6 +74,7 @@ function render() {
   document.getElementById("sub-work").textContent = d.timeline.work;
   document.getElementById("sub-research").textContent = d.timeline.research;
   document.getElementById("nav-publication").textContent = d.nav.publication;
+  document.getElementById("nav-portfolio").textContent = d.nav.portfolio;
   document.getElementById("nav-skills").textContent = d.nav.skills;
   document.getElementById("nav-awards").textContent = d.nav.awards;
   document.getElementById("nav-contact").textContent = d.nav.contact;
@@ -111,6 +119,29 @@ function render() {
   document.getElementById("pub-meta").textContent = `${d.publication.authors} · ${d.publication.date}`;
   document.getElementById("pub-note").textContent = d.publication.note;
 
+  const pf = d.portfolio;
+  document.getElementById("pf-index").textContent = pf.index;
+  document.getElementById("pf-title").textContent = pf.title;
+  document.getElementById("pf-kicker").textContent = pf.kicker;
+  document.getElementById("pf-kind").textContent = pf.kind;
+  document.getElementById("pf-doc-title").textContent = pf.docTitle;
+  document.getElementById("pf-desc").textContent = pf.desc;
+  document.getElementById("pf-facts").innerHTML = pf.facts
+    .map((f) => `<div class="fact"><span>${f.label}</span><b>${f.value}</b></div>`)
+    .join("");
+  document.getElementById("pf-tags").innerHTML = pf.tags.map((tag) => `<span class="tag">${tag}</span>`).join("");
+  document.getElementById("pf-badge").textContent = pf.badge;
+  document.getElementById("pf-hint").textContent = pf.hint;
+  document.getElementById("pf-open").textContent = pf.open;
+  document.getElementById("pf-newtab").textContent = pf.newTab;
+
+  document.getElementById("pdf-modal-kind").textContent = pf.modalKind;
+  document.getElementById("pdf-modal-title").textContent = pf.docTitle;
+  document.getElementById("pdf-newtab").textContent = pf.newTabShort;
+  document.getElementById("pdf-fallback").textContent = pf.fallback;
+  document.getElementById("pdf-frame").title = pf.docTitle;
+  document.getElementById("pdf-close").setAttribute("aria-label", d.ui.close);
+
   document.getElementById("skills-index").textContent = d.skills.index;
   document.getElementById("skills-title").textContent = d.skills.title;
   document.getElementById("sk-design").textContent = d.skills.design;
@@ -122,6 +153,7 @@ function render() {
     d.skills.items.indesign,
     d.skills.items.rhino,
     d.skills.items.gh,
+    d.skills.items.autocad,
   ]
     .map((x) => `<li>${x}</li>`)
     .join("");
@@ -129,7 +161,6 @@ function render() {
     d.skills.items.python,
     d.skills.items.ladybug,
     d.skills.items.energyplus,
-    d.skills.items.bipv,
   ]
     .map((x) => `<li>${x}</li>`)
     .join("");
@@ -155,7 +186,9 @@ function render() {
 
   document.getElementById("contact-index").textContent = d.contact.index;
   document.getElementById("contact-title").textContent = d.contact.title;
-  document.getElementById("contact-text").textContent = d.contact.text;
+  const contactText = document.getElementById("contact-text");
+  contactText.textContent = d.contact.text;
+  contactText.style.display = d.contact.text ? "" : "none";
   document.getElementById("label-wechat").textContent = d.contact.wechat;
   document.getElementById("label-phone").textContent = d.contact.phone;
   document.getElementById("label-email").textContent = d.contact.email;
@@ -352,6 +385,29 @@ function closeModal() {
   }, 230);
 }
 
+function openPdf() {
+  const modal = document.getElementById("pdf-modal");
+  const frame = document.getElementById("pdf-frame");
+  if (!frame.getAttribute("src")) {
+    frame.src = encodeURI(PDF_URL) + "#view=FitH";
+  }
+  modal.hidden = false;
+  requestAnimationFrame(() => modal.classList.add("open"));
+  document.body.style.overflow = "hidden";
+  document.getElementById("pdf-close").focus({ preventScroll: true });
+}
+
+function closePdf() {
+  const modal = document.getElementById("pdf-modal");
+  const frame = document.getElementById("pdf-frame");
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
+  setTimeout(() => {
+    modal.hidden = true;
+    frame.removeAttribute("src");
+  }, 230);
+}
+
 async function copyValue(value, btn, defaultText) {
   if (btn.dataset.busy === "1") return;
   const original = defaultText ?? btn.textContent;
@@ -479,8 +535,19 @@ function bind() {
 
   document.getElementById("modal-close").addEventListener("click", closeModal);
   document.querySelector(".modal-backdrop").addEventListener("click", closeModal);
+
+  const pdfHref = encodeURI(PDF_URL);
+  document.getElementById("pf-newtab").href = pdfHref;
+  document.getElementById("pdf-newtab").href = pdfHref;
+  document.getElementById("pf-cover-btn").addEventListener("click", openPdf);
+  document.getElementById("pf-open").addEventListener("click", openPdf);
+  document.getElementById("pdf-close").addEventListener("click", closePdf);
+  document.querySelector(".pdf-backdrop").addEventListener("click", closePdf);
+
   document.addEventListener("keydown", (ev) => {
-    if (ev.key === "Escape" && !document.getElementById("modal").hidden) closeModal();
+    if (ev.key !== "Escape") return;
+    if (!document.getElementById("pdf-modal").hidden) closePdf();
+    else if (!document.getElementById("modal").hidden) closeModal();
   });
 
   const awardGrid = document.getElementById("award-grid");
